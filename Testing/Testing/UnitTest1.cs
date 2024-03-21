@@ -19,6 +19,8 @@ namespace Testing
             mail.Attachements = new List<string>() {
                 @"C:\Documents\excel.xlsx"
             };
+            mail.isBodyHTML = true; // Not necessary declare, as default this value is true.
+            mail.Message = "<b>Hello World!</b>";
 
             string status = Email.SendEmail(client, mail);   
             if (status != Email.status_OK)
