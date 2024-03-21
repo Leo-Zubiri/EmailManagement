@@ -34,11 +34,11 @@ namespace EmailManagement
                 try
                 {
                     client.Port = _eClient.port; // Specify the SMTP port number
-                    client.Credentials = new NetworkCredential(_eClient.user, _eClient.password);
+                    client.Credentials = new NetworkCredential(_eClient.email, _eClient.password);
                     client.EnableSsl = _eClient.enableSSL; // Enable SSL if required
 
                     // Create the email message
-                    message.From = new MailAddress(_eClient.user);
+                    message.From = new MailAddress(_eClient.email,_eClient.display_name);
                     message.Subject = _mail.Subject;
                     message.Body = _mail.Message;
 
