@@ -15,6 +15,7 @@ namespace EmailManagement
         public List<string> BCC { get; set; } = new List<string>();
         public List<string> Attachements { get; set; } = new List<string>();
         public string Message { get; set; }
+        public bool isBodyHTML { get; set; } = true;
         public Email() { }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace EmailManagement
                     message.From = new MailAddress(_eClient.email,_eClient.display_name);
                     message.Subject = _mail.Subject;
                     message.Body = _mail.Message;
+                    message.IsBodyHtml = _mail.isBodyHTML;
 
                     foreach (string _To in _mail.To)
                     {

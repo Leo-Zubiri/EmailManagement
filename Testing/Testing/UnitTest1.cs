@@ -11,10 +11,14 @@ namespace Testing
         [TestMethod]
         public void TestMethod1()
         {
-            EmailClient client = new EmailClient("smtp",1,"user@correo.com","pass");
+            EmailClient client = new EmailClient("smtp",100,"SENDER","user@correo.com","pass");
             Email mail = new Email();
             mail.Subject = "Test";
             mail.To = new List<string>() {"Zubiri@correo.com"};
+            mail.CC = new List<string>() {"Correo@correo.com"};
+            mail.Attachements = new List<string>() {
+                @"C:\Documents\excel.xlsx"
+            };
 
             string status = Email.SendEmail(client, mail);   
             if (status != Email.status_OK)
